@@ -32,7 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: height * .2),
+                      SizedBox(height: height * .05),
                       RichText(
                         textAlign: TextAlign.center,
                         text: const TextSpan(
@@ -51,18 +51,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: <Widget>[
                           Container(
                             margin: EdgeInsets.symmetric(
-                              vertical: 10,
+                              vertical: 5,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  "Nama Pengguna",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -90,18 +83,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(
-                              vertical: 10,
+                              vertical: 5,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  "Alamat Email",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -129,18 +115,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(
-                              vertical: 10,
+                              vertical: 5,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  "Password",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -172,18 +151,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           Container(
                             margin: EdgeInsets.symmetric(
-                              vertical: 10,
+                              vertical: 5,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  "Nomor Telepon",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                ),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -192,7 +164,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                     fontSize: 20,
                                   ),
                                   textAlign: TextAlign.start,
-                                  obscureText: true,
                                   decoration: InputDecoration(
                                     hintText: "Nomor Telepon",
                                     border: OutlineInputBorder(
@@ -254,9 +225,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
                       InkWell(
                         onTap: () {
                           Navigator.push(
@@ -268,7 +236,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         },
                         child: Container(
                           margin: EdgeInsets.symmetric(
-                            vertical: 20,
+                            vertical: 5,
                           ),
                           padding: EdgeInsets.all(15),
                           alignment: Alignment.bottomCenter,
