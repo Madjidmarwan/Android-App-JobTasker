@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:signup/screens/login_page.dart';
 import 'package:signup/screens/home_page.dart';
-import 'package:signup/screens/signup_page.dart';
+import 'package:signup/screens/signup_veri.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key, this.title}) : super(key: key);
+// ignore: camel_case_types
+class SignUp_PINPage extends StatefulWidget {
+  const SignUp_PINPage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignUpPINPageState createState() => _SignUpPINPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPINPageState extends State<SignUp_PINPage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -34,20 +36,37 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(height: height * .05),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: const TextSpan(
-                          text: 'Log In',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                                child: const Icon(
+                                    Icons.arrow_back_ios_new_rounded,
+                                    color: Colors.black,
+                                    size: 24),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignUp_VERIPage(),
+                                    ),
+                                  );
+                                }),
+                            RichText(
+                              textAlign: TextAlign.center,
+                              text: const TextSpan(
+                                text: 'PIN',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            const Icon(Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white, size: 24),
+                          ]),
                       Column(
                         children: <Widget>[
                           Container(
@@ -57,8 +76,26 @@ class _LoginPageState extends State<LoginPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
+                                Container(
+                                    alignment: Alignment.center,
+                                    child: const Icon(Icons.lock,
+                                        color: Colors.blue, size: 200)),
+                                Center(
+                                  child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: const TextSpan(
+                                      text:
+                                          'Masukan PIN yang akan digunakan pada proses pembayaran',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 20,
                                 ),
                                 TextField(
                                   style: const TextStyle(
@@ -67,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                   textAlign: TextAlign.start,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    hintText: "Email",
+                                    hintText: "Kode OTP",
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(
                                         8,
@@ -82,46 +119,10 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    suffix: const Text(
-                                      'Show',
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 50,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -157,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: InkWell(
                             child: const Text(
-                              'Log In',
+                              'Konfirmasi',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
@@ -177,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUpPage(),
+                              builder: (context) => const LoginPage(),
                             ),
                           );
                         },
@@ -190,14 +191,6 @@ class _LoginPageState extends State<LoginPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
-                              Text(
-                                'Belum memiliki akun?',
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
                               SizedBox(
                                 width: 10,
                               ),

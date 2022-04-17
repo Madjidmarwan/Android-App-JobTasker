@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:signup/screens/login_page.dart';
-import 'package:signup/screens/signup_veri.dart';
+import 'package:signup/screens/signup_page.dart';
+import 'package:signup/screens/signup_pin.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key, this.title}) : super(key: key);
+// ignore: camel_case_types
+class SignUp_VERIPage extends StatefulWidget {
+  const SignUp_VERIPage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _SignUpVERIPageState createState() => _SignUpVERIPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpVERIPageState extends State<SignUp_VERIPage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -34,20 +36,36 @@ class _SignUpPageState extends State<SignUpPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(height: height * .05),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: const TextSpan(
-                          text: 'Sign Up',
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            InkWell(
+                                child: const Icon(
+                                    Icons.arrow_back_ios_new_rounded,
+                                    color: Colors.black,
+                                    size: 24),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUpPage(),
+                                    ),
+                                  );
+                                }),
+                            RichText(
+                              textAlign: TextAlign.center,
+                              text: const TextSpan(
+                                text: 'Verifikasi',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            const Icon(Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white, size: 24),
+                          ]),
                       Column(
                         children: <Widget>[
                           Container(
@@ -57,8 +75,26 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
+                                Container(
+                                    alignment: Alignment.center,
+                                    child: const Icon(Icons.email_rounded,
+                                        color: Colors.blue, size: 200)),
+                                Center(
+                                  child: RichText(
+                                    textAlign: TextAlign.center,
+                                    text: const TextSpan(
+                                      text:
+                                          'Kode sudah dikirim ke alamat email',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 const SizedBox(
-                                  height: 10,
+                                  height: 20,
                                 ),
                                 TextField(
                                   style: const TextStyle(
@@ -67,106 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   textAlign: TextAlign.start,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    hintText: "Nama",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: "Email",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    suffix: const Text(
-                                      'Show',
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                    hintText: "Nomor Telepon",
+                                    hintText: "Kode OTP",
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(
                                         8,
@@ -184,7 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 50,
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -220,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         child: InkWell(
                             child: const Text(
-                              'Sign Up',
+                              'Verifikasi',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
@@ -230,7 +167,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignUp_VERIPage(),
+                                  builder: (context) => const SignUp_PINPage(),
                                 ),
                               );
                             }),
@@ -255,7 +192,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             children: const <Widget>[
                               InkWell(
                                 child: Text(
-                                  'Sudah memiliki akun?',
+                                  'Tidak Mendapat Kode OTP?',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontSize: 16,
