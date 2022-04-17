@@ -83,6 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Expanded(
               child: ListView(
             children: [
+              Divider(),
               ListTile(
                 title: Text('Pesanan & Saldo',
                     style:

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:signup/screens/home_page.dart';
 
 class PesananPage extends StatefulWidget {
   const PesananPage({Key? key, this.title}) : super(key: key);
@@ -17,6 +16,7 @@ class _PesananPage extends State<PesananPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
             child: Column(
           children: <Widget>[
@@ -106,6 +106,9 @@ class _PesananPage extends State<PesananPage> {
                   ]),
             ),
             SizedBox(
+              height: 15,
+            ),
+            SizedBox(
               height: 300,
               child: TabBarView(
                   children: <Widget>[PesanankuScreen(), PesananmuScreen()]),
@@ -126,6 +129,7 @@ class PesanankuScreen extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.car_rental),
@@ -133,6 +137,7 @@ class PesanankuScreen extends StatelessWidget {
             subtitle: Text('26 / 04 / 2021 - 10:51'),
             trailing: Text('8m ago'),
           )),
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.mail_outline),
@@ -140,6 +145,7 @@ class PesanankuScreen extends StatelessWidget {
             subtitle: Text('26 / 04 / 2021 - 10:51'),
             trailing: Text('8m ago'),
           )),
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.shopping_bag_outlined),
@@ -162,6 +168,7 @@ class PesananmuScreen extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.car_rental),
@@ -169,6 +176,7 @@ class PesananmuScreen extends StatelessWidget {
             subtitle: Text('26 / 04 / 2021 - 10:51'),
             trailing: Text('8m ago'),
           )),
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.mail_outline),
@@ -176,6 +184,7 @@ class PesananmuScreen extends StatelessWidget {
             subtitle: Text('26 / 04 / 2021 - 10:51'),
             trailing: Text('8m ago'),
           )),
+          Divider(),
           Expanded(
               child: ListTile(
             leading: Icon(Icons.shopping_bag_outlined),
