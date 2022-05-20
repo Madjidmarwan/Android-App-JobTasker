@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:signup/screens/login_page.dart';
-import 'package:signup/screens/signup_veri.dart';
+import 'package:signup/screens/home_page copy.dart';
+import 'package:signup/screens/signup_page.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key, this.title}) : super(key: key);
+class LogInPage extends StatefulWidget {
+  const LogInPage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _LogInPageState createState() => _LogInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LogInPageState extends State<LogInPage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -37,7 +37,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       RichText(
                         textAlign: TextAlign.center,
                         text: const TextSpan(
-                          text: 'Sign Up',
+                          text: 'Log In',
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w700,
@@ -50,38 +50,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Column(
                         children: <Widget>[
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: "Nama",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                           Container(
                             margin: const EdgeInsets.symmetric(
                               vertical: 5,
@@ -149,38 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ],
                             ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  decoration: InputDecoration(
-                                    hintText: "Nomor Telepon",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          )
                         ],
                       ),
                       const SizedBox(
@@ -220,7 +157,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         child: InkWell(
                             child: const Text(
-                              'Sign Up',
+                              'Log In',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
@@ -230,7 +167,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignUp_VERIPage(),
+                                  builder: (context) => Homepage(),
                                 ),
                               );
                             }),
@@ -240,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LogInPage(),
+                              builder: (context) => const SignUpPage(),
                             ),
                           );
                         },
@@ -253,14 +190,12 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
-                              InkWell(
-                                child: Text(
-                                  'Sudah memiliki akun?',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                              Text(
+                                'Belum memiliki akun?',
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               SizedBox(
