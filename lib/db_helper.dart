@@ -31,6 +31,13 @@ class DatabaseHandler {
     return queryResult.map((e) => order.fromMap(e)).toList();
   }
 
+  Future<List<order>> Oneorder(int id) async {
+    final db = await initializeDB();
+    final List<Map<String, dynamic>> queryResult =
+        await db.query('orders', where: 'id = ?', whereArgs: [id]);
+    return queryResult.map((e) => order.fromMap(e)).toList();
+  }
+
   Future<void> deleteOrder(int id) async {
     final db = await initializeDB();
     await db.delete(
@@ -38,5 +45,17 @@ class DatabaseHandler {
       where: 'id = ?',
       whereArgs: [id],
     );
+  }
+
+  Future<void> UpdateOrders(int id, String namaPekerjaan,
+      String lokasiPekerjaan, int biayaPekerjaan) async {
+    final db = await initializeDB();
+    final updatedOrder = {
+      'namaPekerjaan': namaPekerjaan,
+      'lokasiPekerjaan': lokasiPekerjaan,
+      'biayaPekerjaan': biayaPekerjaan
+    };
+    final result = await db
+        .update('orders', updatedOrder, where: 'id = ?', whereArgs: [id]);
   }
 }

@@ -1,6 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:signup/screens/home_page copy 2.dart';
+import 'package:signup/screens/home_page.dart';
 import 'dart:math';
 import 'package:signup/db_helper.dart';
 import 'package:signup/models/order.dart';
@@ -262,7 +262,7 @@ class _DetailPageState extends State<DetailPage> {
                                             ));
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
+                                      const SnackBar(
                                           content: Text('Processing Data')),
                                     );
                                   }
