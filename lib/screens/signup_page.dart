@@ -165,6 +165,42 @@ class _SignUpPageState extends State<SignUpPage> {
                                     fontSize: 20,
                                   ),
                                   textAlign: TextAlign.start,
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    hintText: "Confirm Password",
+                                    suffix: const Text(
+                                      'Show',
+                                      style: TextStyle(color: Colors.blue),
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        8,
+                                      ),
+                                    ),
+                                    fillColor: const Color(
+                                      0xfff3f3f4,
+                                    ),
+                                    filled: true,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 5,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextField(
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                  textAlign: TextAlign.start,
                                   decoration: InputDecoration(
                                     hintText: "Nomor Telepon",
                                     border: OutlineInputBorder(
