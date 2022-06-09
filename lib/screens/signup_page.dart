@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:signup/screens/login_page.dart';
 import 'package:signup/screens/signup_veri.dart';
 
+import 'package:signup/databases/UserDatabase.dart';
+import 'package:signup/models/user.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key, this.title}) : super(key: key);
 
@@ -12,10 +15,23 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey();
+  final _scafoldKey = GlobalKey();
+  final _nameEditController = TextEditingController();
+  final _emailEditController = TextEditingController();
+  final _mobileEditController = TextEditingController();
+  final _passwordEditController = TextEditingController();
+  String email_pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  String password_pattern = r'^[a-zA-Z0-9]{6,}$';
+  String mobile_pattern = r'^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$';
+  Size size = Size.zero;
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      key: _scafoldKey,
       body: SafeArea(
         child: SizedBox(
           height: height,
@@ -60,12 +76,16 @@ class _SignUpPageState extends State<SignUpPage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: false,
+                                TextFormField(
+                                  controller: _nameEditController,
+                                  textInputAction: TextInputAction.next,
+                                  validator: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Masukkan Nama";
+                                    }
+                                    return null;
+                                  },
+                                  style: const TextStyle(fontSize: 20),
                                   decoration: InputDecoration(
                                     hintText: "Nama",
                                     border: OutlineInputBorder(
@@ -92,14 +112,20 @@ class _SignUpPageState extends State<SignUpPage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: false,
+                                TextFormField(
+                                  controller: _emailEditController,
+                                  textInputAction: TextInputAction.next,
+                                  validator: (value) {
+                                    RegExp regex = RegExp(email_pattern);
+                                    if (!regex.hasMatch(value!))
+                                      return 'Enter Valid Email';
+                                    else
+                                      return null;
+                                  },
+                                  keyboardType: TextInputType.emailAddress,
+                                  style: const TextStyle(fontSize: 20),
                                   decoration: InputDecoration(
-                                    hintText: "Email",
+                                    hintText: "E-mail",
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(
                                         8,
@@ -124,85 +150,60 @@ class _SignUpPageState extends State<SignUpPage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    suffix: const Text(
-                                      'Show',
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    hintText: "Confirm Password",
-                                    suffix: const Text(
-                                      'Show',
-                                      style: TextStyle(color: Colors.blue),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        8,
-                                      ),
-                                    ),
-                                    fillColor: const Color(
-                                      0xfff3f3f4,
-                                    ),
-                                    filled: true,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 5,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                TextField(
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                  ),
-                                  textAlign: TextAlign.start,
+                                TextFormField(
+                                  controller: _mobileEditController,
+                                  textInputAction: TextInputAction.next,
+                                  validator: (value) {
+                                    RegExp regex = RegExp(mobile_pattern);
+                                    if (!regex.hasMatch(value!))
+                                      return 'Masukkan nomor yang valid';
+                                    else
+                                      return null;
+                                    return null;
+                                  },
+                                  keyboardType: TextInputType.number,
+                                  maxLength: 10,
+                                  style: const TextStyle(fontSize: 20),
                                   decoration: InputDecoration(
                                     hintText: "Nomor Telepon",
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        8,
+                                      ),
+                                    ),
+                                    fillColor: const Color(
+                                      0xfff3f3f4,
+                                    ),
+                                    filled: true,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 5,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                TextFormField(
+                                  controller: _passwordEditController,
+                                  textInputAction: TextInputAction.done,
+                                  validator: (value) {
+                                    RegExp regex = RegExp(password_pattern);
+                                    if (!regex.hasMatch(value))
+                                      return 'Password should be in alphanumaric with 6 characters';
+                                    else
+                                      return null;
+                                  },
+                                  obscureText: true,
+                                  style: const TextStyle(fontSize: 20),
+                                  decoration: InputDecoration(
+                                    hintText: "Password",
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(
                                         8,
