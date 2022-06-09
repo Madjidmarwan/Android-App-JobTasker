@@ -7,7 +7,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 class UserDatabase {
-  static String path;
+  static String path = "";
   static final _databaseName = "mydb.db";
   static final _databaseVersion = 1;
 
