@@ -1,33 +1,64 @@
-// ignore: camel_case_types
-class order {
-  final int id;
+final String tableOrders = 'orders';
+
+class OrderFields {
+  static final List<String> values = [
+    id,
+    namaPekerjaan,
+    lokasiPekerjaan,
+    biayaPekerjaan,
+    createdTime
+  ];
+
+  static final String id = '_id';
+  static final String namaPekerjaan = 'namaPekerjaan';
+  static final String lokasiPekerjaan = 'lokasiPekerjaan';
+  static final String biayaPekerjaan = 'biayaPekerjaan';
+  static final String createdTime = 'createdTime';
+}
+
+class Order {
+  final int? id;
   final String namaPekerjaan;
   final String lokasiPekerjaan;
   final int biayaPekerjaan;
+  final DateTime createdTime;
 
-  order(
-      {required this.id,
-      required this.namaPekerjaan,
-      required this.lokasiPekerjaan,
-      required this.biayaPekerjaan});
+  const Order({
+    this.id,
+    required this.namaPekerjaan,
+    required this.lokasiPekerjaan,
+    required this.biayaPekerjaan,
+    required this.createdTime,
+  });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'namaPekerjaan': namaPekerjaan,
-      'lokasiPekerjaan': lokasiPekerjaan,
-      'biayaPekerjaan': biayaPekerjaan
-    };
-  }
+  Order copy({
+    int? id,
+    String? namaPekerjaan,
+    String? lokasiPekerjaan,
+    int? biayaPekerjaan,
+    DateTime? createdTime,
+  }) =>
+      Order(
+        id: id ?? this.id,
+        namaPekerjaan: namaPekerjaan ?? this.namaPekerjaan,
+        lokasiPekerjaan: lokasiPekerjaan ?? this.lokasiPekerjaan,
+        biayaPekerjaan: biayaPekerjaan ?? this.biayaPekerjaan,
+        createdTime: createdTime ?? this.createdTime,
+      );
 
-  order.fromMap(Map<String, dynamic> res)
-      : id = res["id"],
-        namaPekerjaan = res["namaPekerjaan"],
-        lokasiPekerjaan = res["lokasiPekerjaan"],
-        biayaPekerjaan = res["biayaPekerjaan"];
+  static Order fromJson(Map<String, Object?> json) => Order(
+        id: json[OrderFields.id] as int?,
+        namaPekerjaan: json[OrderFields.namaPekerjaan] as String,
+        lokasiPekerjaan: json[OrderFields.lokasiPekerjaan] as String,
+        biayaPekerjaan: json[OrderFields.biayaPekerjaan] as int,
+        createdTime: DateTime.parse(json[OrderFields.createdTime] as String),
+      );
 
-  @override
-  String toString() {
-    return 'order{id: $id, namaPekerjaan: $namaPekerjaan, lokasiPekerjaan: $lokasiPekerjaan, biayaPekerjaan: $biayaPekerjaan}';
-  }
+  Map<String, Object?> toJson() => {
+        OrderFields.id: id,
+        OrderFields.namaPekerjaan: namaPekerjaan,
+        OrderFields.lokasiPekerjaan: lokasiPekerjaan,
+        OrderFields.biayaPekerjaan: biayaPekerjaan,
+        OrderFields.createdTime: createdTime.toIso8601String(),
+      };
 }

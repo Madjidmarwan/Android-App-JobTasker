@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signup/screens/login_page.dart';
-import 'package:signup/screens/home_page.dart';
+import 'package:signup/screens/order_page.dart';
 import 'package:signup/screens/signup_veri.dart';
 
 // ignore: camel_case_types
@@ -168,7 +168,7 @@ class _SignUpPINPageState extends State<SignUp_PINPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Homepage(),
+                                  builder: (context) => OrderPage(),
                                 ),
                               );
                             }),
