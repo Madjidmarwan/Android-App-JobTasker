@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:signup/screens/home_page.dart';
-import 'package:signup/db_helper.dart';
+import 'package:signup/newconfig/home_page.dart';
+import 'package:signup/newconfig/register_page.dart';
+import 'package:signup/newconfig/login_page.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseHandler().initializeDB();
-  runApp(const MyApp());
-}
+void main() => runApp(new MyApp());
+
+final routes = {
+  '/login': (BuildContext context) => new LoginPage(),
+  '/home': (BuildContext context) => new HomePage(),
+  '/register': (BuildContext context) => new RegisterPage(),
+  '/': (BuildContext context) => new LoginPage(),
+};
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Homepage(),
+    return new MaterialApp(
+      title: 'Login Register App',
+      theme: new ThemeData(primarySwatch: Colors.teal),
+      routes: routes,
     );
   }
 }

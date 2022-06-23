@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:signup/screens/home_page.dart';
-import 'package:signup/screens/pesanan_page.dart';
+import 'package:signup/models/order.dart';
+import 'package:signup/screens/order_page.dart';
+import 'package:signup/screens/riwayat_order_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, this.title}) : super(key: key);
@@ -30,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Homepage(),
+                        builder: (context) => OrderPage(),
                       ),
                     );
                   }),
@@ -93,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PesananPage(),
+                      builder: (context) => PesananPage(),
                     ),
                   );
                 },

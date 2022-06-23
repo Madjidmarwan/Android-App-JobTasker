@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:signup/screens/home_page.dart';
+import 'package:signup/screens/order_page.dart';
 import 'package:signup/screens/signup_page.dart';
 
 class LogInPage extends StatefulWidget {
@@ -167,7 +167,7 @@ class _LogInPageState extends State<LogInPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Homepage(),
+                                  builder: (context) => OrderPage(),
                                 ),
                               );
                             }),
