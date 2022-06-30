@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:signup/newconfig/user.dart';
+import 'package:signup/models/user.dart';
 import 'package:path/path.dart';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';

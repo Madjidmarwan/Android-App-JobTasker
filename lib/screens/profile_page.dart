@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:signup/models/order.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:signup/screens/login_page.dart';
 import 'package:signup/screens/order_page.dart';
+import 'package:signup/screens/image_picker.dart';
 import 'package:signup/screens/riwayat_order_page.dart';
+import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, this.title}) : super(key: key);
@@ -13,6 +17,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  late FileImage test;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -58,10 +63,10 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(
             height: 15,
           ),
-          const CircleAvatar(
-            // backgroundImage: ,
-            radius: 45,
-            backgroundColor: Colors.black,
+          const ProfilePicture(
+            name: 'Vidi Fadilakbar',
+            radius: 31,
+            fontsize: 21,
           ),
           const SizedBox(
             height: 10,
@@ -86,7 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               const Divider(),
               ListTile(
-                title: const Text('Pesanan & Saldo',
+                title: const Text('Pesanan',
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 trailing: const Icon(Icons.keyboard_arrow_right_sharp),
@@ -101,15 +106,22 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const Divider(),
               ListTile(
-                title: const Text('Ubah Password',
+                title: const Text('Ubah Profile Picture',
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CameraWidget(),
+                    ),
+                  );
+                },
               ),
               const Divider(),
               ListTile(
-                title: const Text('Preferensi Notifikasi',
+                title: const Text('Atur Lokasi Pengguna',
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 trailing: const Icon(Icons.keyboard_arrow_right_sharp),
@@ -122,7 +134,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-                onTap: () {},
+                onTap: () async {
+                  await Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                  ));
+                },
               ),
             ],
           ))

@@ -1,6 +1,6 @@
-import 'package:signup/newconfig/rest_data.dart';
-import 'package:signup/newconfig/user.dart';
-import 'package:signup/newconfig/user_database.dart';
+import 'package:signup/database/rest_data.dart';
+import 'package:signup/models/user.dart';
+import 'package:signup/database/user_database.dart';
 
 abstract class LoginPageContract {
   void onLoginSuccess(User user);

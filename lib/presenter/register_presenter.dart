@@ -1,5 +1,5 @@
-import 'package:signup/newconfig/rest_data.dart';
-import 'package:signup/newconfig/user.dart';
+import 'package:signup/database/rest_data.dart';
+import 'package:signup/models/user.dart';
 
 abstract class RegisterPageContract {
   void onRegisterSuccess(User user);

@@ -1,8 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:signup/order_database.dart';
+import 'package:signup/database/order_database.dart';
 import 'package:signup/models/order.dart';
+import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 class PesananPage extends StatefulWidget {
   const PesananPage({Key? key, this.title}) : super(key: key);
@@ -57,10 +58,10 @@ class _PesananPage extends State<PesananPage> {
             const SizedBox(
               height: 15,
             ),
-            const CircleAvatar(
-              // backgroundImage: ,
-              radius: 45,
-              backgroundColor: Colors.black,
+            const ProfilePicture(
+              name: 'Vidi Fadilakbar',
+              radius: 31,
+              fontsize: 21,
             ),
             const SizedBox(
               height: 10,

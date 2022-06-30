@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:signup/newconfig/network_util.dart';
-import 'package:signup/newconfig/login_exception.dart';
-import 'package:signup/newconfig/user_database.dart';
-import 'package:signup/newconfig/user.dart';
+import 'package:signup/database/network_util.dart';
+import 'package:signup/database/login_exception.dart';
+import 'package:signup/database/user_database.dart';
+import 'package:signup/models/user.dart';
 
 class RestData {
   NetworkUtil _netUtil = new NetworkUtil();

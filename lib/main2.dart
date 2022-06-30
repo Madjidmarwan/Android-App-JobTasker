@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:signup/screens/signup_page.dart';
+import 'package:signup/screens/login_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +24,6 @@ class MyApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: SignUpPage(),
+        home: LoginPage(),
       );
 }

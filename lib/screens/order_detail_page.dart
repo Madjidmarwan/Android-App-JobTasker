@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:signup/order_database.dart';
+import 'package:signup/database/order_database.dart';
 import 'package:signup/models/order.dart';
 import 'package:signup/screens/edit_order_page.dart';
 
@@ -38,6 +38,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          title: Text("Detail Pesanan"),
           actions: [editButton(), deleteButton()],
         ),
         body: isLoading
@@ -48,28 +49,102 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   padding: EdgeInsets.symmetric(vertical: 8),
                   children: [
                     Text(
-                      order.namaPekerjaan,
+                      "Nama Pekerjaan",
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      initialValue: order.namaPekerjaan,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.start,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                        ),
+                        fillColor: const Color(
+                          0xfff3f3f4,
+                        ),
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 20),
                     Text(
-                      DateFormat.yMMMd().format(order.createdTime),
-                      style: TextStyle(color: Colors.black),
+                      "Lokasi Pekerjaan",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      initialValue: order.lokasiPekerjaan,
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.start,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                        ),
+                        fillColor: const Color(
+                          0xfff3f3f4,
+                        ),
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Bayaran Pekerjaan",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      initialValue: order.biayaPekerjaan.toString(),
+                      style: const TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.start,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(
+                            8,
+                          ),
+                        ),
+                        fillColor: const Color(
+                          0xfff3f3f4,
+                        ),
+                        filled: true,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "Pesanan dibuat pada " +
+                          DateFormat.yMMMd().format(order.createdTime),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
                     ),
                     SizedBox(height: 8),
-                    Text(
-                      order.lokasiPekerjaan,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                    ),
                     SizedBox(height: 8),
-                    Text(
-                      order.biayaPekerjaan.toString(),
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                    )
                   ],
                 ),
               ),
