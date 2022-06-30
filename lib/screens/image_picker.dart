@@ -68,7 +68,7 @@ class CameraWidgetState extends State<CameraWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Pick Image Camera"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: Container(
@@ -82,7 +82,7 @@ class CameraWidgetState extends State<CameraWidget> {
               ),
               MaterialButton(
                 textColor: Colors.white,
-                color: Colors.pink,
+                color: Colors.blue,
                 onPressed: () {
                   _showChoiceDialog(context);
                   imageFileReturn = imageFile;
@@ -91,7 +91,7 @@ class CameraWidgetState extends State<CameraWidget> {
               ),
               MaterialButton(
                 textColor: Colors.white,
-                color: Colors.pink,
+                color: Colors.blue,
                 onPressed: () {
                   Navigator.pop(context, imageFileReturn);
                 },
