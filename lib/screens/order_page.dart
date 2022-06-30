@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:signup/database/order_database.dart';
 import 'package:signup/models/order.dart';
 import 'package:signup/screens/edit_order_page.dart';
 import 'package:signup/screens/order_detail_page.dart';
 import 'package:signup/screens/profile_page.dart';
+import 'package:geocoding/geocoding.dart';
 
 class OrderPage extends StatefulWidget {
+  String? address;
+  OrderPage({this.address});
   @override
-  _OrderPageState createState() => _OrderPageState();
+  _OrderPageState createState() => _OrderPageState(address: address);
 }
 
 class _OrderPageState extends State<OrderPage> {
   late List<Order> order;
   bool isLoading = false;
+  String? address;
+  _OrderPageState({this.address});
 
   @override
   void initState() {
@@ -61,6 +67,34 @@ class _OrderPageState extends State<OrderPage> {
           ],
         ),
         body: Column(children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  SizedBox(
+                    width: 315,
+                    child: Text(
+                      'Lokasimu : $address',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SimpleMap()));
+                    },
+                    icon: const Icon(
+                      Icons.map,
+                      color: Colors.blue,
+                    ),
+                    tooltip: 'Pilih Lokasi',
+                  )
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 550,
             child: Center(
@@ -172,4 +206,53 @@ class _OrderPageState extends State<OrderPage> {
           ),
         );
       });
+}
+
+class SimpleMap extends StatefulWidget {
+  const SimpleMap({Key? key}) : super(key: key);
+
+  @override
+  State<SimpleMap> createState() => _SimpleMapState();
+}
+
+class _SimpleMapState extends State<SimpleMap> {
+  String address = "";
+  List<Marker> myMarker = [];
+  static final LatLng _telkomUniversity = LatLng(-6.9733165, 107.6303302);
+
+  static final CameraPosition _kInitialPosition = CameraPosition(
+      target: _telkomUniversity, zoom: 13.0, tilt: 0, bearing: 0);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: GoogleMap(
+        initialCameraPosition: _kInitialPosition,
+        markers: Set.from(myMarker),
+        onTap: _handleTap,
+        onLongPress: (latlang) async {
+          List<Placemark> location = await placemarkFromCoordinates(
+              _telkomUniversity.latitude, _telkomUniversity.longitude,
+              localeIdentifier: "id_ID");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => OrderPage(
+                      address:
+                          '${location.first.subLocality}, ${location.first.locality}, ${location.first.administrativeArea}, ${location.first.postalCode}, ${location.first.country}')));
+        },
+      ),
+    );
+  }
+
+  _handleTap(LatLng tappedPoint) {
+    setState(() {
+      print(tappedPoint);
+      myMarker = [];
+      myMarker.add(Marker(
+        markerId: MarkerId(tappedPoint.toString()),
+        position: tappedPoint,
+      ));
+    });
+  }
 }
