@@ -8,6 +8,8 @@ android:name="android.permission.ACCESS_COARSE_LOCATION"/>
         android:label="signup"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyDqNWhEK3OyBfmyMYipkyw-lfzl_uQki3w"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
